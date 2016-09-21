@@ -10,9 +10,9 @@ const gcTypes = {
   1: 'Scavenge',
   2: 'MarkSweepCompact',
   3: 'ScavengeAndMarkSweepCompact',
-	4: 'IncrementalMarking',
-	8: 'WeakPhantom',
-	15: 'All'
+  4: 'IncrementalMarking',
+  8: 'WeakPhantom',
+  15: 'All',
 };
 
 const noop = () => {
