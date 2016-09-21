@@ -6,10 +6,10 @@ import optional from 'optional';
 const gc = optional('gc-stats');
 
 const gcTypes = {
-  0: 'unknown',
-  1: 'minor',
-  2: 'major',
-  3: 'both',
+  0: 'Unknown',
+  1: 'Scavenge',
+  2: 'MarkSweepCompact',
+  3: 'ScavengeAndMarkSweepCompact',
 };
 
 const noop = () => {
