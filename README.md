@@ -21,6 +21,14 @@ metrics, then invoke the returned function to start the collecting.
 The module doing the GC stats collecing is [`gc-stats`](https://github.com/dainis/node-gcstats). This module requires native dependencies.
 If the stats don't show up, make sure to check `npm`'s install log for failures.
 
+## Metrics exposed
+
+This module exposes 3 metrics:
+
+1. `nodejs_gc_count`: Counts the number of time GC is invoked
+2. `nodejs_gc_pause_nanos_total`: Time spent in GC in nanoseconds
+3. `nodejs_gc_reclaimed_bytes_total`: The number of bytes GC has freed
+
 ## Credits
 
 Thanks to @tcolgate for the original implementation.
