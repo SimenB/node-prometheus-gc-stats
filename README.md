@@ -25,9 +25,10 @@ If the stats don't show up, make sure to check `npm`'s install log for failures.
 
 This module exposes 3 metrics:
 
-1. `nodejs_gc_count`: Counts the number of time GC is invoked
-2. `nodejs_gc_pause_nanos_total`: Time spent in GC in nanoseconds
-3. `nodejs_gc_reclaimed_bytes_total`: The number of bytes GC has freed
+1. `nodejs_gc_runs_total`: Counts the number of time GC is invoked
+2. `nodejs_gc_pause_total_nanoseconds`: Time spent in GC in nanoseconds
+    1. There's an option that can be passed to the function, `{ seconds: true }` which make this be reported in seconds instead
+3. `nodejs_gc_reclaimed_total_bytes`: The number of bytes GC has freed
 
 ## Credits
 
