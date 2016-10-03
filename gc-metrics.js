@@ -18,20 +18,14 @@ const gcTypes = {
 const noop = () => {
 };
 
-export default ({ seconds = false } = {}) => {
+export default () => {
   if (typeof gc !== 'function') {
     return noop;
   }
 
   const gcCount = new Counter('nodejs_gc_runs_total', 'Count of total garbage collections.', ['gctype']);
-  const gcReclaimedCount = new Counter('nodejs_gc_reclaimed_total_bytes', 'Total number of bytes reclaimed by GC.', ['gctype']);
-  let gcTimeCount;
-
-  if (seconds) {
-    gcTimeCount = new Counter('nodejs_gc_pause_total_seconds', 'Time spent in GC Pause in seconds.', ['gctype']);
-  } else {
-    gcTimeCount = new Counter('nodejs_gc_pause_total_nanoseconds', 'Time spent in GC Pause in nanoseconds.', ['gctype']);
-  }
+  const gcTimeCount = new Counter('nodejs_gc_pause_seconds_total', 'Time spent in GC Pause in seconds.', ['gctype']);
+  const gcReclaimedCount = new Counter('nodejs_gc_reclaimed_bytes_total', 'Total number of bytes reclaimed by GC.', ['gctype']);
 
   let started = false;
 
@@ -40,16 +34,13 @@ export default ({ seconds = false } = {}) => {
       started = true;
 
       gc().on('stats', stats => {
-        gcCount.labels(gcTypes[stats.gctype]).inc();
+        const gcType = gcTypes[stats.gctype];
 
-        if (seconds) {
-          gcTimeCount.labels(gcTypes[stats.gctype]).inc(stats.pause / 1e9);
-        } else {
-          gcTimeCount.labels(gcTypes[stats.gctype]).inc(stats.pause);
-        }
+        gcCount.labels(gcType).inc();
+        gcTimeCount.labels(gcType).inc(stats.pause / 1e9);
 
         if (stats.diff.usedHeapSize < 0) {
-          gcReclaimedCount.labels(gcTypes[stats.gctype]).inc(stats.diff.usedHeapSize * -1);
+          gcReclaimedCount.labels(gcType).inc(stats.diff.usedHeapSize * -1);
         }
       });
     }
