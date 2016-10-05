@@ -39,7 +39,7 @@
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-preset-es2015": "^6.14.0",
     "eslint": "^3.6.0",
-    "eslint-config-simenb-base": "^3.0.0",
+    "eslint-config-simenb-base": "^4.0.0",
     "in-publish": "^2.0.0",
     "prom-client": "^5.0.1"
   }
