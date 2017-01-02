@@ -32,7 +32,7 @@
     "optional": "^0.1.3"
   },
   "peerDependencies": {
-    "prom-client": ">= 3.2 < 7"
+    "prom-client": ">= 3.2 < 8"
   },
   "devDependencies": {
     "babel-cli": "^6.16.0",
@@ -41,6 +41,6 @@
     "eslint": "^3.9.1",
     "eslint-config-simenb-base": "^9.0.0",
     "in-publish": "^2.0.0",
-    "prom-client": "^6.1.0"
+    "prom-client": "^7.0.0"
   }
 }
