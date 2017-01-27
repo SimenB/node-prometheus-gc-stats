@@ -8,6 +8,7 @@
 [![Optional Dependency Status][david-optional-image]][david-optional-url]
 [![Peer Dependency Status][david-peer-image]][david-peer-url]
 [![Dev Dependency Status][david-dev-image]][david-dev-url]
+[![Greenkeeper badge][greenkeeper-image]][greenkeeper-url]
 
 ## Usage
 
@@ -46,3 +47,5 @@ Thanks to @tcolgate for the original implementation.
 [david-peer-image]: https://img.shields.io/david/peer/SimenB/node-prometheus-gc-stats.svg
 [david-optional-url]: https://david-dm.org/SimenB/node-prometheus-gc-stats#info=optionalDependencies
 [david-optional-image]: https://img.shields.io/david/optional/SimenB/node-prometheus-gc-stats.svg
+[greenkeeper-url]: greenkeeper-url
+[greenkeeper-image]:https://badges.greenkeeper.io/SimenB/node-prometheus-gc-stats.svg
