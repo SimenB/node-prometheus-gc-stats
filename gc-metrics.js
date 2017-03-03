@@ -15,8 +15,7 @@ const gcTypes = {
   15: 'All',
 };
 
-const noop = () => {
-};
+const noop = () => {};
 
 export default () => {
   if (typeof gc !== 'function') {
@@ -40,7 +39,7 @@ export default () => {
         gcTimeCount.labels(gcType).inc(stats.pause / 1e9);
 
         if (stats.diff.usedHeapSize < 0) {
-          gcReclaimedCount.labels(gcType).inc(stats.diff.usedHeapSize * -1);
+          gcReclaimedCount.labels(gcType).inc(stats.diff.usedHeapSize * (-1));
         }
       });
     }
