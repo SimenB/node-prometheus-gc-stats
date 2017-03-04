@@ -24,7 +24,9 @@ export default () => {
 
   const gcCount = new Counter('nodejs_gc_runs_total', 'Count of total garbage collections.', ['gctype']);
   const gcTimeCount = new Counter('nodejs_gc_pause_seconds_total', 'Time spent in GC Pause in seconds.', ['gctype']);
-  const gcReclaimedCount = new Counter('nodejs_gc_reclaimed_bytes_total', 'Total number of bytes reclaimed by GC.', ['gctype']);
+  const gcReclaimedCount = new Counter('nodejs_gc_reclaimed_bytes_total', 'Total number of bytes reclaimed by GC.', [
+    'gctype',
+  ]);
 
   let started = false;
 
