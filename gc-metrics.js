@@ -17,7 +17,7 @@ const gcTypes = {
 
 const noop = () => {};
 
-export default (client) => {
+export default client => {
   const promClient = client || { Counter };
 
   if (typeof gc !== 'function') {
