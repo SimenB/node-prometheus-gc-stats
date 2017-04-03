@@ -17,12 +17,11 @@ const gcTypes = {
 
 const noop = () => {};
 
-export default (promClient) => {
+export default (client) => {
+  const promClient = client || { Counter };
+
   if (typeof gc !== 'function') {
     return noop;
-  }
-  if (promClient && promClient.Counter !== 'function') {
-    promClient.Counter = Counter;
   }
 
   const gcCount = new promClient.Counter('nodejs_gc_runs_total', 'Count of total garbage collections.', ['gctype']);
