@@ -17,6 +17,9 @@ This module has a peer dependency on [`prom-client`](https://github.com/siimon/p
 This module follows the same API as the core default metrics. To start collection GC stats, invoke the exported function to create the
 metrics, then invoke the returned function to start the collecting.
 
+The exported function takes a single parameter, which is a registry. If provided, and the version of prom-client you use support it, that is
+the registry which the metrics will register to.
+
 ### `gc-stats`
 
 The module doing the GC stats collecting is [`gc-stats`](https://github.com/dainis/node-gcstats). This module requires native dependencies.
