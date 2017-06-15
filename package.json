@@ -8,6 +8,7 @@
   ],
   "scripts": {
     "compile": "babel gc-metrics.js -o index.js",
+    "postcompile": "prettier --write index.js",
     "lint": "eslint .",
     "prepublish": "not-in-install && npm run compile || in-install",
     "postpublish": "git push --follow-tags",
