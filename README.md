@@ -44,11 +44,11 @@ Thanks to @tcolgate for the original implementation.
 [npm-image]: https://img.shields.io/npm/v/prometheus-gc-stats.svg
 [david-url]: https://david-dm.org/SimenB/node-prometheus-gc-stats
 [david-image]: https://img.shields.io/david/SimenB/node-prometheus-gc-stats.svg
-[david-dev-url]: https://david-dm.org/SimenB/node-prometheus-gc-stats#info=devDependencies
+[david-dev-url]: https://david-dm.org/SimenB/node-prometheus-gc-stats?type=dev
 [david-dev-image]: https://img.shields.io/david/dev/SimenB/node-prometheus-gc-stats.svg
-[david-peer-url]: https://david-dm.org/SimenB/node-prometheus-gc-stats#info=peerDependencies
+[david-peer-url]: https://david-dm.org/SimenB/node-prometheus-gc-stats?type=peer
 [david-peer-image]: https://img.shields.io/david/peer/SimenB/node-prometheus-gc-stats.svg
-[david-optional-url]: https://david-dm.org/SimenB/node-prometheus-gc-stats#info=optionalDependencies
+[david-optional-url]: https://david-dm.org/SimenB/node-prometheus-gc-stats?type=optional
 [david-optional-image]: https://img.shields.io/david/optional/SimenB/node-prometheus-gc-stats.svg
 [greenkeeper-url]: greenkeeper-url
 [greenkeeper-image]:https://badges.greenkeeper.io/SimenB/node-prometheus-gc-stats.svg
