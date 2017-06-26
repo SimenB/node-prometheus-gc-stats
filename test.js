@@ -1,7 +1,6 @@
 /* eslint-env jest*/
 
 import promRegister from 'prom-client/lib/register';
-import PromRegistry from 'prom-client/lib/registry';
 import { version as promVersion } from 'prom-client/package.json';
 import gcMetrics from './gc-metrics';
 
@@ -27,6 +26,9 @@ test('should register metrics to custom register', () => {
   if (!promSupportsRegistries) {
     return;
   }
+
+  // eslint-disable-next-line
+  const PromRegistry = require('prom-client/lib/registry');
 
   const register = new PromRegistry();
 
