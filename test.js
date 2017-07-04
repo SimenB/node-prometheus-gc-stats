@@ -1,12 +1,10 @@
 /* eslint-env jest*/
 
-import promRegister from 'prom-client/lib/register';
-import { version as promVersion } from 'prom-client/package.json';
-import gcMetrics from './gc-metrics';
+'use strict';
 
-const promMajor = Number(promVersion.split('.')[0]);
-
-const promSupportsRegistries = promMajor >= 9;
+const promRegister = require('prom-client').register;
+const PromRegistry = require('prom-client').Registry;
+const gcMetrics = require('./index');
 
 jest.mock('gc-stats');
 
@@ -23,13 +21,6 @@ test('should register metrics', () => {
 });
 
 test('should register metrics to custom register', () => {
-  if (!promSupportsRegistries) {
-    return;
-  }
-
-  // eslint-disable-next-line
-  const PromRegistry = require('prom-client/lib/registry');
-
   const register = new PromRegistry();
 
   expect(promRegister.getMetricsAsJSON()).toHaveLength(0);
