@@ -18,7 +18,18 @@ This module follows the same API as the core default metrics. To start collectio
 metrics, then invoke the returned function to start the collecting.
 
 The exported function takes a single parameter, which is a registry. If provided, and the version of prom-client you use support it, that is
-the registry which the metrics will register to.
+the registry which the metrics will register to. If no registry is provided it will use the default one provided by `prom-client`.
+
+Example:
+
+```js
+const prometheus = require('prom-client');
+const gcStats = require('prometheus-gc-stats');
+
+prometheus.collectDefaultMetrics();
+const startGcStats = gcStats(prometheus.registry); // gcStats() would have the same effect in this case
+startGcStats();
+```
 
 ### `gc-stats`
 
