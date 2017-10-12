@@ -33,8 +33,9 @@ startGcStats();
 
 ### `gc-stats`
 
-The module doing the GC stats collecting is [`gc-stats`](https://github.com/dainis/node-gcstats). This module requires native dependencies.
-If the stats don't show up, make sure to check `npm`'s install log for failures.
+The module doing the GC stats collecting is [`gc-stats`](https://github.com/dainis/node-gcstats). This module requires native dependencies. It can be expected to work on Linux and Node >= 8 on macOS.
+
+If the stats still don't show up, make sure to check `npm`'s install log for failures.
 
 ## Metrics exposed
 
