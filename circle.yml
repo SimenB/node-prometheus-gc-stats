@@ -17,7 +17,7 @@ dependencies:
     - ~/.yarn
     - ~/.cache/yarn
   override:
-    - yarn install --no-progress
+    - yarn install --no-progress --ignore-engines
 test:
   override:
     - nvm alias default 6
