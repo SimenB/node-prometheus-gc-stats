@@ -7,11 +7,7 @@
     "index.js"
   ],
   "scripts": {
-    "compile": "babel gc-metrics.js -o index.js",
-    "postcompile": "prettier --write index.js",
     "lint": "eslint .",
-    "prepublishOnly": "npm run compile",
-    "postpublish": "git push --follow-tags",
     "pretest": "npm run lint",
     "test": "jest"
   },
