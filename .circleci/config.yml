@@ -1,0 +1,61 @@
+workflows:
+  version: 2
+  node-multi-build:
+    jobs:
+      - node-v4
+      - node-v6
+      - node-v8
+version: 2
+jobs:
+  node-base: &node-base
+    docker:
+      - image: node
+    working_directory: ~/working_directory
+    steps:
+      - run:
+          name: Versions
+          command: yarn versions
+      - checkout
+      - restore_cache:
+          keys:
+            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-lock-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}-{{ checksum "yarn.lock" }}
+            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-lock-master-{{ .Environment.CIRCLE_JOB }}-{{ checksum "yarn.lock" }}
+            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-cache-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}
+            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-cache-master-{{ .Environment.CIRCLE_JOB }}
+      - run:
+          name: Install dependencies
+          command: yarn install --ignore-engines
+      - run:
+          name: Install prom-client@10
+          command: yarn add --dev prom-client@^10 --ignore-engines
+      - run:
+          name: Test prom-client@10
+          command: yarn test
+      - run:
+          name: Install prom-client@11
+          command: yarn add --dev prom-client@^11 --ignore-engines
+      - run:
+          name: Test prom-client@11
+          command: yarn test
+      - save_cache:
+          key: v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-lock-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+      - save_cache:
+          key: v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-cache-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}-{{ checksum "yarn.lock" }}
+          paths:
+            - /usr/local/share/.cache/yarn
+            - /root/.cache/yarn
+
+  node-v4:
+    <<: *node-base
+    docker:
+      - image: node:4
+  node-v6:
+    <<: *node-base
+    docker:
+      - image: node:6
+  node-v8:
+    <<: *node-base
+    docker:
+      - image: node:8

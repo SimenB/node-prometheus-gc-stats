@@ -1,8 +1,0 @@
-env:
-    - VERSION=10
-    - VERSION=11
-
-command:
-    - yarn add prom-client@"$VERSION" --dev --ignore-engines
-    - yarn --force --ignore-engines
-    - yarn test
