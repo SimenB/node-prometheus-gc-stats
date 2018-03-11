@@ -1,6 +1,6 @@
 env:
-    # Just 10 for now
     - VERSION=10
+    - VERSION=11
 
 command:
     - yarn add prom-client@"$VERSION" --dev

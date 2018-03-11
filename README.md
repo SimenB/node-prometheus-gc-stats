@@ -1,4 +1,5 @@
 # prometheus-gc-stats
+
 > Report Garbage Collection stats using Prometheus
 
 [![NPM Version][npm-image]][npm-url]
@@ -48,7 +49,6 @@ This module exposes 3 metrics:
 
 Thanks to @tcolgate for the original implementation.
 
-
 [circle-ci-url]: https://circleci.com/gh/SimenB/node-prometheus-gc-stats
 [circle-ci-image]: https://circleci.com/gh/SimenB/node-prometheus-gc-stats/tree/master.svg?style=shield&circle-token=05b6e173edee3b1494b0370d5d3caea00ad358a3
 [npm-url]: https://npmjs.org/package/prometheus-gc-stats
@@ -62,4 +62,4 @@ Thanks to @tcolgate for the original implementation.
 [david-optional-url]: https://david-dm.org/SimenB/node-prometheus-gc-stats?type=optional
 [david-optional-image]: https://img.shields.io/david/optional/SimenB/node-prometheus-gc-stats.svg
 [greenkeeper-url]: greenkeeper-url
-[greenkeeper-image]:https://badges.greenkeeper.io/SimenB/node-prometheus-gc-stats.svg
+[greenkeeper-image]: https://badges.greenkeeper.io/SimenB/node-prometheus-gc-stats.svg
