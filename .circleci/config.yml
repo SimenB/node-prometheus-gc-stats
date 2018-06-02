@@ -60,3 +60,7 @@ jobs:
     <<: *node-base
     docker:
       - image: node:8
+  node-v10:
+    <<: *node-base
+    docker:
+      - image: node:10
