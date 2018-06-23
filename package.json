@@ -35,7 +35,7 @@
     "prom-client": ">= 10 < 12"
   },
   "devDependencies": {
-    "eslint": "^4.3.0",
+    "eslint": "^5.0.0",
     "eslint-config-simenb-base": "^14.0.0",
     "eslint-config-simenb-jest": "^2.0.0",
     "eslint-config-simenb-node": "^0.4.9",
