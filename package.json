@@ -26,7 +26,7 @@
   "license": "MIT",
   "repository": "SimenB/node-prometheus-gc-stats",
   "optionalDependencies": {
-    "gc-stats": "^1.0.0"
+    "gc-stats": "^1.2.0"
   },
   "dependencies": {
     "optional": "^0.1.3"
