@@ -2,9 +2,9 @@ workflows:
   version: 2
   node-multi-build:
     jobs:
-      - node-v4
       - node-v6
       - node-v8
+      - node-v10
 version: 2
 jobs:
   node-base: &node-base
@@ -47,10 +47,6 @@ jobs:
             - /usr/local/share/.cache/yarn
             - /root/.cache/yarn
 
-  node-v4:
-    <<: *node-base
-    docker:
-      - image: node:4
   node-v6:
     <<: *node-base
     docker:
@@ -59,3 +55,7 @@ jobs:
     <<: *node-base
     docker:
       - image: node:8
+  node-v10:
+    <<: *node-base
+    docker:
+      - image: node:10
