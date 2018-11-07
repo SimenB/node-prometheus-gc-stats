@@ -40,7 +40,7 @@
     "eslint-config-simenb-jest": "^2.0.0",
     "eslint-config-simenb-node": "^1.0.0",
     "jest": "^23.5.0",
-    "prettier": "^1.4.4",
+    "prettier": "^1.15.0",
     "prom-client": "^10.0.0"
   },
   "jest": {
