@@ -2816,9 +2816,9 @@ progress@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.0.tgz#8a1be366bf8fc23db2bd23f10c6fe920b4389d1f"
 
-prom-client@^10.0.0:
-  version "10.2.3"
-  resolved "https://registry.yarnpkg.com/prom-client/-/prom-client-10.2.3.tgz#a51bf21c239c954a6c5be4b1361fdd380218bb41"
+prom-client@^11.2.0:
+  version "11.2.0"
+  resolved "https://registry.yarnpkg.com/prom-client/-/prom-client-11.2.0.tgz#4a52b29a6e9960f8b0b27054b87ad37ad120562e"
   dependencies:
     tdigest "^0.1.1"
 
