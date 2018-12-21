@@ -41,7 +41,7 @@
     "eslint-config-simenb-node": "^1.0.0",
     "jest": "^23.5.0",
     "prettier": "^1.4.4",
-    "prom-client": "^10.0.0"
+    "prom-client": "^11.2.1"
   },
   "jest": {
     "testEnvironment": "node"
