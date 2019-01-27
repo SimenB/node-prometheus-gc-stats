@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "eslint": "^5.6.0",
-    "eslint-config-simenb-base": "^15.0.0",
+    "eslint-config-simenb-base": "^15.0.1",
     "eslint-config-simenb-jest": "^2.0.0",
     "eslint-config-simenb-node": "^1.0.0",
     "jest": "^23.5.0",
