@@ -31,7 +31,6 @@ prometheus.collectDefaultMetrics();
 const startGcStats = gcStats(prometheus.register); // gcStats() would have the same effect in this case
 startGcStats();
 ```
-
 ### `gc-stats`
 
 The module doing the GC stats collecting is [`gc-stats`](https://github.com/dainis/node-gcstats). This module requires native dependencies.
@@ -44,6 +43,12 @@ This module exposes 3 metrics:
 1. `nodejs_gc_runs_total`: Counts the number of time GC is invoked
 2. `nodejs_gc_pause_seconds_total`: Time spent in GC in seconds
 3. `nodejs_gc_reclaimed_bytes_total`: The number of bytes GC has freed
+
+You can add a prefix to metric names using options:
+
+```
+const startGcStats = gcStats(prometheus.register, { prefix: 'my_application_' }); 
+```
 
 ## Credits
 
