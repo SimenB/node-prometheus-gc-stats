@@ -12,7 +12,7 @@ afterEach(() => {
   promRegister.clear();
 });
 
-test('should register metrics', () => {
+test('register metrics', () => {
   expect(promRegister.getMetricsAsJSON()).toHaveLength(0);
 
   gcMetrics();
@@ -20,7 +20,7 @@ test('should register metrics', () => {
   expect(promRegister.getMetricsAsJSON()).toHaveLength(3);
 });
 
-test('should register metrics to custom register', () => {
+test('register metrics to custom register', () => {
   const register = new PromRegistry();
 
   expect(promRegister.getMetricsAsJSON()).toHaveLength(0);
@@ -30,4 +30,18 @@ test('should register metrics to custom register', () => {
 
   expect(promRegister.getMetricsAsJSON()).toHaveLength(0);
   expect(register.getMetricsAsJSON()).toHaveLength(3);
+});
+
+test('include prefix', () => {
+  expect(promRegister.getMetricsAsJSON()).toHaveLength(0);
+
+  gcMetrics(undefined, { prefix: 'prefix_' });
+
+  expect(promRegister.getMetricsAsJSON()).toHaveLength(3);
+
+  expect(promRegister.getMetricsAsJSON().map(metric => metric.name)).toEqual([
+    'prefix_nodejs_gc_runs_total',
+    'prefix_nodejs_gc_pause_seconds_total',
+    'prefix_nodejs_gc_reclaimed_bytes_total',
+  ]);
 });

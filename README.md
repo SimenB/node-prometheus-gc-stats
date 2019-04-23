@@ -45,6 +45,14 @@ This module exposes 3 metrics:
 2. `nodejs_gc_pause_seconds_total`: Time spent in GC in seconds
 3. `nodejs_gc_reclaimed_bytes_total`: The number of bytes GC has freed
 
+You can add a prefix to metric names using options:
+
+```js
+const startGcStats = gcStats(prometheus.register, {
+  prefix: 'my_application_',
+});
+```
+
 ## Credits
 
 Thanks to @tcolgate for the original implementation.

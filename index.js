@@ -19,7 +19,7 @@ const gcTypes = {
 
 const noop = () => {};
 
-module.exports = registry => {
+module.exports = (registry, config = {}) => {
   if (typeof gc !== 'function') {
     return noop;
   }
@@ -28,20 +28,22 @@ module.exports = registry => {
 
   const labelNames = ['gctype'];
 
+  const namePrefix = config.prefix ? config.prefix : '';
+
   const gcCount = new Counter({
-    name: 'nodejs_gc_runs_total',
+    name: `${namePrefix}nodejs_gc_runs_total`,
     help: 'Count of total garbage collections.',
     labelNames,
     registers,
   });
   const gcTimeCount = new Counter({
-    name: 'nodejs_gc_pause_seconds_total',
+    name: `${namePrefix}nodejs_gc_pause_seconds_total`,
     help: 'Time spent in GC Pause in seconds.',
     labelNames,
     registers,
   });
   const gcReclaimedCount = new Counter({
-    name: 'nodejs_gc_reclaimed_bytes_total',
+    name: `${namePrefix}nodejs_gc_reclaimed_bytes_total`,
     help: 'Total number of bytes reclaimed by GC.',
     labelNames,
     registers,
