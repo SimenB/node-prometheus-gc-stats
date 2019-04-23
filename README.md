@@ -24,13 +24,14 @@ the registry which the metrics will register to. If no registry is provided it w
 Example:
 
 ```js
-const prometheus = require('prom-client');
-const gcStats = require('prometheus-gc-stats');
+const prometheus = require("prom-client");
+const gcStats = require("prometheus-gc-stats");
 
 prometheus.collectDefaultMetrics();
 const startGcStats = gcStats(prometheus.register); // gcStats() would have the same effect in this case
 startGcStats();
 ```
+
 ### `gc-stats`
 
 The module doing the GC stats collecting is [`gc-stats`](https://github.com/dainis/node-gcstats). This module requires native dependencies.
@@ -46,8 +47,10 @@ This module exposes 3 metrics:
 
 You can add a prefix to metric names using options:
 
-```
-const startGcStats = gcStats(prometheus.register, { prefix: 'my_application_' }); 
+```js
+const startGcStats = gcStats(prometheus.register, {
+  prefix: "my_application_"
+});
 ```
 
 ## Credits
