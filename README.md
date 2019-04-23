@@ -24,8 +24,8 @@ the registry which the metrics will register to. If no registry is provided it w
 Example:
 
 ```js
-const prometheus = require("prom-client");
-const gcStats = require("prometheus-gc-stats");
+const prometheus = require('prom-client');
+const gcStats = require('prometheus-gc-stats');
 
 prometheus.collectDefaultMetrics();
 const startGcStats = gcStats(prometheus.register); // gcStats() would have the same effect in this case
@@ -49,7 +49,7 @@ You can add a prefix to metric names using options:
 
 ```js
 const startGcStats = gcStats(prometheus.register, {
-  prefix: "my_application_"
+  prefix: 'my_application_'
 });
 ```
 
