@@ -45,5 +45,8 @@
   },
   "jest": {
     "testEnvironment": "node"
+  },
+  "prettier": {
+    "singleQuote": true
   }
 }
