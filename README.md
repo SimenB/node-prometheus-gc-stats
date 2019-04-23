@@ -49,7 +49,7 @@ You can add a prefix to metric names using options:
 
 ```js
 const startGcStats = gcStats(prometheus.register, {
-  prefix: 'my_application_'
+  prefix: 'my_application_',
 });
 ```
 
