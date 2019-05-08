@@ -33,18 +33,21 @@ module.exports = (registry, config = {}) => {
   const gcCount = new Counter({
     name: `${namePrefix}nodejs_gc_runs_total`,
     help: 'Count of total garbage collections.',
+    aggregator: 'average',
     labelNames,
     registers,
   });
   const gcTimeCount = new Counter({
     name: `${namePrefix}nodejs_gc_pause_seconds_total`,
     help: 'Time spent in GC Pause in seconds.',
+    aggregator: 'average',
     labelNames,
     registers,
   });
   const gcReclaimedCount = new Counter({
     name: `${namePrefix}nodejs_gc_reclaimed_bytes_total`,
     help: 'Total number of bytes reclaimed by GC.',
+    aggregator: 'average',
     labelNames,
     registers,
   });
