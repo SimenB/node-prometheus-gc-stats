@@ -1,6 +1,5 @@
 version: 2.1
 
-
 workflows:
   all-tests:
     jobs:
@@ -23,33 +22,18 @@ jobs:
         type: string
       prom-client-version:
         type: string
-    executor: linux
+    executor: node/default
     steps:
       - checkout
       - node/install:
           node-version: << parameters.node-version >>
           install-yarn: true
-      - restore_cache:
-          keys:
-            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-lock-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}-{{ checksum "yarn.lock" }}
-            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-lock-master-{{ .Environment.CIRCLE_JOB }}-{{ checksum "yarn.lock" }}
-            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-cache-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}
-            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-cache-master-{{ .Environment.CIRCLE_JOB }}
+      - node/install-packages:
+          pkg-manager: yarn
+          override-ci-command: yarn install --ignore-engines
       - run:
-          name: Install dependencies
-          command: yarn install --ignore-engines
+          name: Install prom-client@<< parameters.prom-client-version >>
+          command: yarn add --dev prom-client@^<< parameters.prom-client-version >> --ignore-engines
       - run:
-          name: Install prom-client@<< matrix.prom-client-version >>
-          command: yarn add --dev prom-client@^<< matrix.prom-client-version >> --ignore-engines
-      - run:
-          name: Test prom-client@<< matrix.prom-client-version >>
+          name: Test prom-client@<< parameters.prom-client-version >>
           command: yarn test
-      - save_cache:
-          key: v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-lock-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}-{{ checksum "yarn.lock" }}
-          paths:
-            - node_modules
-      - save_cache:
-          key: v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-cache-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}-{{ checksum "yarn.lock" }}
-          paths:
-            - /usr/local/share/.cache/yarn
-            - /root/.cache/yarn
