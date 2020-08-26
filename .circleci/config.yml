@@ -9,7 +9,6 @@ workflows:
             exclude:
               - node-version: '6'
                 prom-client-version: '12'
-
 orbs:
   node: circleci/node@4.0.0
 version: 2.1
@@ -30,6 +29,8 @@ jobs:
       - node/install-packages:
           pkg-manager: yarn
           override-ci-command: yarn install --ignore-engines
+          cache-path: ~/.cache/yarn
+          include-branch-in-cache-key: false
       - run:
           name: Install prom-client@<< parameters.prom-client-version >>
           command: yarn add --dev prom-client@^<< parameters.prom-client-version >> --ignore-engines
