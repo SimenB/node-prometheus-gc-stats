@@ -14,7 +14,7 @@ workflows:
                 prom-client-version: '12'
 
 orbs:
-  node: circleci/node@2.0.0
+  node: circleci/node@4.0.0
 
 jobs:
   test:
