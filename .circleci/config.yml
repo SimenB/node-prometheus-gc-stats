@@ -1,25 +1,34 @@
+version: 2.1
+
+
 workflows:
-  node-multi-build:
+  all-tests:
     jobs:
       - test:
-        matrix:
-          parameters:
-            node-version: [6, 8, 10, 12, 14]
-            prom-client-version: [10, 11, 12]
-          exclude:
-            - node-version: 6
-              prom-client-version: 12
-version: 2.1
+          matrix:
+            parameters:
+              node-version: [ '6', '8', '10', '12', '14' ]
+              prom-client-version: [ '10', '11', '12' ]
+            exclude:
+              - node-version: '6'
+                prom-client-version: '12'
+
+orbs:
+  node: circleci/node@2.0.0
+
 jobs:
   test:
-    docker:
-      - image: node:<< matrix.node-version >>
-    working_directory: ~/working_directory
+    parameters:
+      node-version:
+        type: string
+      prom-client-version:
+        type: string
+    executor: linux
     steps:
-      - run:
-          name: Versions
-          command: yarn versions
       - checkout
+      - node/install:
+          node-version: << parameters.node-version >>
+          install-yarn: true
       - restore_cache:
           keys:
             - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-lock-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}-{{ checksum "yarn.lock" }}
