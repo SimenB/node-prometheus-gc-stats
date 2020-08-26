@@ -5,6 +5,8 @@ workflows:
       - node-v6
       - node-v8
       - node-v10
+      - node-v12
+      - node-v14
 version: 2
 jobs:
   node-base: &node-base
@@ -37,6 +39,12 @@ jobs:
       - run:
           name: Test prom-client@11
           command: yarn test
+      - run:
+          name: Install prom-client@12
+          command: yarn add --dev prom-client@^12 --ignore-engines
+      - run:
+          name: Test prom-client@12
+          command: yarn test
       - save_cache:
           key: v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-lock-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}-{{ checksum "yarn.lock" }}
           paths:
@@ -59,3 +67,11 @@ jobs:
     <<: *node-base
     docker:
       - image: node:10
+  node-v12:
+    <<: *node-base
+    docker:
+      - image: node:12
+  node-v14:
+    <<: *node-base
+    docker:
+      - image: node:14
