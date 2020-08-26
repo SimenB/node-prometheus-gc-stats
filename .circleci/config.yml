@@ -1,7 +1,5 @@
-version: 2.1
-
 workflows:
-  all-tests:
+  node-multi-build:
     jobs:
       - test:
           matrix:
@@ -11,7 +9,7 @@ workflows:
             exclude:
               - node-version: '6'
                 prom-client-version: '12'
-
+version: 2.1
 jobs:
   test:
     parameters:
@@ -19,18 +17,31 @@ jobs:
         type: string
       prom-client-version:
         type: string
-    executor: node/default
+    docker:
+      - image: node:<< parameters.node-version >>
     steps:
       - checkout
-      - node/install:
-          node-version: << parameters.node-version >>
-          install-yarn: true
-      - node/install-packages:
-          pkg-manager: yarn
-          override-ci-command: yarn install --ignore-engines
+      - restore_cache:
+          keys:
+            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-lock-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}-{{ checksum "yarn.lock" }}
+            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-lock-master-{{ .Environment.CIRCLE_JOB }}-{{ checksum "yarn.lock" }}
+            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-cache-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}
+            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-cache-master-{{ .Environment.CIRCLE_JOB }}
+      - run:
+          name: Install dependencies
+          command: yarn install --ignore-engines
       - run:
           name: Install prom-client@<< parameters.prom-client-version >>
           command: yarn add --dev prom-client@^<< parameters.prom-client-version >> --ignore-engines
       - run:
           name: Test prom-client@<< parameters.prom-client-version >>
           command: yarn test
+      - save_cache:
+          key: v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-lock-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+      - save_cache:
+          key: v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-cache-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}-{{ checksum "yarn.lock" }}
+          paths:
+            - /usr/local/share/.cache/yarn
+            - /root/.cache/yarn
