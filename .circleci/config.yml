@@ -1,20 +1,25 @@
 workflows:
-  version: 2
   node-multi-build:
     jobs:
-      - node-v6
-      - node-v8
-      - node-v10
-version: 2
+      - test:
+          matrix:
+            parameters:
+              node-version: ['6', '8', '10', '12', '14']
+              prom-client-version: ['10', '11', '12']
+            exclude:
+              - node-version: '6'
+                prom-client-version: '12'
+version: 2.1
 jobs:
-  node-base: &node-base
+  test:
+    parameters:
+      node-version:
+        type: string
+      prom-client-version:
+        type: string
     docker:
-      - image: node
-    working_directory: ~/working_directory
+      - image: node:<< parameters.node-version >>
     steps:
-      - run:
-          name: Versions
-          command: yarn versions
       - checkout
       - restore_cache:
           keys:
@@ -26,16 +31,10 @@ jobs:
           name: Install dependencies
           command: yarn install --ignore-engines
       - run:
-          name: Install prom-client@10
-          command: yarn add --dev prom-client@^10 --ignore-engines
+          name: Install prom-client@<< parameters.prom-client-version >>
+          command: yarn add --dev prom-client@^<< parameters.prom-client-version >> --ignore-engines
       - run:
-          name: Test prom-client@10
-          command: yarn test
-      - run:
-          name: Install prom-client@11
-          command: yarn add --dev prom-client@^11 --ignore-engines
-      - run:
-          name: Test prom-client@11
+          name: Test prom-client@<< parameters.prom-client-version >>
           command: yarn test
       - save_cache:
           key: v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-lock-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}-{{ checksum "yarn.lock" }}
@@ -46,16 +45,3 @@ jobs:
           paths:
             - /usr/local/share/.cache/yarn
             - /root/.cache/yarn
-
-  node-v6:
-    <<: *node-base
-    docker:
-      - image: node:6
-  node-v8:
-    <<: *node-base
-    docker:
-      - image: node:8
-  node-v10:
-    <<: *node-base
-    docker:
-      - image: node:10
