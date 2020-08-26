@@ -1,6 +1,6 @@
 {
   "name": "prometheus-gc-stats",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "description": "Report Garbage Collection stats using Prometheus",
   "main": "index.js",
   "files": [
