@@ -52,6 +52,6 @@ const startGcStats = gcStats(prometheus.register, {
 Thanks to @tcolgate for the original implementation.
 
 [circle-ci-url]: https://circleci.com/gh/SimenB/node-prometheus-gc-stats
-[circle-ci-image]: https://circleci.com/gh/SimenB/node-prometheus-gc-stats/tree/master.svg?style=shield&circle-token=05b6e173edee3b1494b0370d5d3caea00ad358a3
+[circle-ci-image]: https://circleci.com/gh/SimenB/node-prometheus-gc-stats/tree/main.svg?style=shield&circle-token=05b6e173edee3b1494b0370d5d3caea00ad358a3
 [npm-url]: https://npmjs.org/package/prometheus-gc-stats
 [npm-image]: https://img.shields.io/npm/v/prometheus-gc-stats.svg
