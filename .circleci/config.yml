@@ -24,8 +24,6 @@ jobs:
       - checkout
       - node/install:
           node-version: << parameters.node-version >>
-          install-npm: false
-          install-yarn: true
       - node/install-packages:
           pkg-manager: yarn
           override-ci-command: yarn install --ignore-engines
