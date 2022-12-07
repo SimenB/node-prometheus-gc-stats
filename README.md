@@ -5,12 +5,6 @@
 [![NPM Version][npm-image]][npm-url]
 [![Build Status][circle-ci-image]][circle-ci-url]
 
-[![Dependency Status][david-image]][david-url]
-[![Optional Dependency Status][david-optional-image]][david-optional-url]
-[![Peer Dependency Status][david-peer-image]][david-peer-url]
-[![Dev Dependency Status][david-dev-image]][david-dev-url]
-[![Greenkeeper badge][greenkeeper-image]][greenkeeper-url]
-
 ## Usage
 
 This module has a peer dependency on [`prom-client`](https://github.com/siimon/prom-client). Currently, 10 is supported.
@@ -61,13 +55,3 @@ Thanks to @tcolgate for the original implementation.
 [circle-ci-image]: https://circleci.com/gh/SimenB/node-prometheus-gc-stats/tree/master.svg?style=shield&circle-token=05b6e173edee3b1494b0370d5d3caea00ad358a3
 [npm-url]: https://npmjs.org/package/prometheus-gc-stats
 [npm-image]: https://img.shields.io/npm/v/prometheus-gc-stats.svg
-[david-url]: https://david-dm.org/SimenB/node-prometheus-gc-stats
-[david-image]: https://img.shields.io/david/SimenB/node-prometheus-gc-stats.svg
-[david-dev-url]: https://david-dm.org/SimenB/node-prometheus-gc-stats?type=dev
-[david-dev-image]: https://img.shields.io/david/dev/SimenB/node-prometheus-gc-stats.svg
-[david-peer-url]: https://david-dm.org/SimenB/node-prometheus-gc-stats?type=peer
-[david-peer-image]: https://img.shields.io/david/peer/SimenB/node-prometheus-gc-stats.svg
-[david-optional-url]: https://david-dm.org/SimenB/node-prometheus-gc-stats?type=optional
-[david-optional-image]: https://img.shields.io/david/optional/SimenB/node-prometheus-gc-stats.svg
-[greenkeeper-url]: greenkeeper-url
-[greenkeeper-image]: https://badges.greenkeeper.io/SimenB/node-prometheus-gc-stats.svg
