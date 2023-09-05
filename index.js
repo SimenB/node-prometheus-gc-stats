@@ -5,7 +5,7 @@
 const Counter = require('prom-client').Counter;
 const optional = require('optional');
 
-const gc = optional('gc-stats');
+const gc = optional('@sematext/gc-stats');
 
 const v8Version = process.versions.v8;
 const v8MajorVersion = Number(v8Version.split('.')[0]);
