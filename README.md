@@ -9,6 +9,8 @@
 
 This module has a peer dependency on [`prom-client`](https://github.com/siimon/prom-client). Currently, 10-14 is supported.
 
+Note that version 12 and up of `prom-client` comes with GC metrics out of the box, so this module might not be needed. See [this comment](https://github.com/siimon/prom-client/pull/361#discussion_r400430717).
+
 This module follows the same API as the core default metrics. To start collection GC stats, invoke the exported function to create the
 metrics, then invoke the returned function to start the collecting.
 
