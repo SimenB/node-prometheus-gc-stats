@@ -20,7 +20,7 @@
     "statsd"
   ],
   "engines": {
-    "node": ">=6"
+    "node": ">=10"
   },
   "author": "Simen Bekkhus <sbekkhus91@gmail.com>",
   "license": "MIT",
