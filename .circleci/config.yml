@@ -4,8 +4,8 @@ workflows:
       - test:
           matrix:
             parameters:
-              node-version: ['6', '8', '10', '12', '14', '16', '18', '19']
-              prom-client-version: ['10', '11', '12']
+              node-version: ['6', '8', '10', '12', '14', '16', '18', '19', '20']
+              prom-client-version: ['10', '11', '12', '13', '14']
             exclude:
               - node-version: '6'
                 prom-client-version: '12'
