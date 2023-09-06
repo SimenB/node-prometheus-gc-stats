@@ -20,13 +20,13 @@
     "statsd"
   ],
   "engines": {
-    "node": ">=6"
+    "node": ">=10"
   },
   "author": "Simen Bekkhus <sbekkhus91@gmail.com>",
   "license": "MIT",
   "repository": "SimenB/node-prometheus-gc-stats",
   "optionalDependencies": {
-    "gc-stats": "^1.4.0"
+    "@sematext/gc-stats": "^1.5.9"
   },
   "dependencies": {
     "optional": "^0.1.3"
