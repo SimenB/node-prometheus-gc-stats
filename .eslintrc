@@ -1,7 +1,20 @@
 {
-  "extends": ["simenb-base", "simenb-node", "simenb-jest"],
+  "extends": [
+    "simenb-base",
+    "simenb-node",
+    "simenb-jest"
+  ],
   "rules": {
     // Not supported in node 4
     "prefer-destructuring": "off"
-  }
+  },
+  "overrides": [
+    {
+      "files": "test.js",
+      "rules": {
+        // Jest transpiles
+        "node/no-unsupported-features/es-syntax": "off"
+      }
+    }
+  ]
 }
