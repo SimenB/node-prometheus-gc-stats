@@ -5,7 +5,14 @@ workflows:
           matrix:
             parameters:
               node-version: ['10', '12', '14', '16', '18', '20']
-              prom-client-version: ['10', '11', '12', '13', '14']
+              prom-client-version: ['10', '11', '12', '13', '14', '15']
+            exclude:
+              - node-version: '10'
+                prom-client-version: '15'
+              - node-version: '12'
+                prom-client-version: '15'
+              - node-version: '14'
+                prom-client-version: '15'
 orbs:
   node: circleci/node@5.1.0
 version: 2.1
