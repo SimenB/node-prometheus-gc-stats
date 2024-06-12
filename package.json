@@ -40,7 +40,7 @@
     "babel-jest": "^26.0.0",
     "eslint": "^5.6.0",
     "eslint-config-simenb-base": "^15.0.0",
-    "eslint-config-simenb-jest": "^3.0.0",
+    "eslint-config-simenb-jest": "^4.0.0",
     "eslint-config-simenb-node": "^2.0.0",
     "jest": "^26.0.0",
     "prettier": "^1.4.4",
